@@ -52,7 +52,7 @@
                             $("#categorylist").append(xmlResponse);
                         else
                             document.getElementById(return_data).innerHTML = xmlResponse;
-                        forBlog();
+                        removeOnBlog();
                     } else {
                         document.getElementById('error_data').innerHTML = '<font color=red>Error!</font>';
                     }
@@ -66,10 +66,12 @@
         };
     }
     function forWapAjax() {
-        //todo
+        unsafeWindow.wapjsonpage = function (page) {
+            $.getScript("//dyn.ithome.com/jsonp/news/wappage?page=" + page, removeOnWap);
+        }
     }
 
-    function forHomepage() {
+    function removeOnHomepage() {
         var newsSpan = $('.title a');
         newsSpan.each(function (i) {
             var newsUrl = $(this).attr("href");
@@ -78,7 +80,7 @@
             }
         });
     }
-    function forList() {
+    function removeOnList() {
         var newsSpan = $('.ulcl a');
         newsSpan.each(function (i) {
             var newsUrl = $(this).attr("href");
@@ -87,12 +89,10 @@
             }
         });
     }
-    function forBlog() {
-        forList();
-        forBlogAjax();
+    function removeOnBlog() {
+        removeOnList();
     }
-    function forWap() {
-        forWapAjax();
+    function removeOnWap() {
         var newsSpan = $('.title').parent();
         newsSpan.each(function (i) {
             var newsUrl = $(this).attr("href");
@@ -100,6 +100,21 @@
                 $(this).parent().remove();
             }
         });
+    }
+
+    function forHomepage() {
+        removeOnHomepage();
+    }
+    function forList() {
+        removeOnList();
+    }
+    function forBlog() {
+        forBlogAjax();
+        removeOnBlog();
+    }
+    function forWap() {
+        forWapAjax();
+        removeOnWap();
     }
 
 
