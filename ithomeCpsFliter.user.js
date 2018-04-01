@@ -3,7 +3,7 @@
 // @name:zh-CN          IT之家资讯列表广告屏蔽
 // @description         移除IT之家（ithome.com）资讯列表内投放的购物广告；Remove CPS Ads in ithome.com's news list.
 // @description:zh-CN   移除IT之家（ithome.com）资讯列表内投放的购物广告。
-// @version             1.2
+// @version             1.3
 // @author              YvesX https://www.yvesx.com
 // @namespace           https://github.com/Yves-X
 // @contributionURL     https://www.yvesx.com/go/donate/
